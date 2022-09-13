@@ -35,14 +35,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     ListTile(
                       title: Text(favorite.name, style: TextStyle(color: primary, fontWeight: FontWeight.bold),),
                       subtitle: Text(
-                        'Profession',
+                        favorite.job,
                         style: TextStyle(color: secondary),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        'Description du professionnel',
+                        favorite.description,
                         style: TextStyle(color: Colors.black.withOpacity(0.6)),
                       ),
                     ),

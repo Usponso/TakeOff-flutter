@@ -15,39 +15,55 @@ class ResultPage extends StatefulWidget {
 
 class _ResultPageState extends State<ResultPage> {
   List<Profile> results = [
-    Profile(name: "Jean Dupont", img: "developer_cover.jfif"),
-    Profile(name: "John Doe"),
-    Profile(name: "Sarah Smith"),
-    Profile(name: "Jane Doe", img: "developer_cover.jfif"),
-    Profile(name: "Lorem Ipsum", img: "developer_cover.jfif"),
+    Profile(
+        name: "Jean Dupont",
+        job: "Développeur fullstack",
+        localisation: "Bethune",
+        description:
+            "Développer FullStack depuis 5 ans. Je maitrise Vue.js, Angular et React.",
+        img: "developer_cover.jfif"),
+    Profile(name: "John Doe", job: "Ingénieur son", localisation: "Lille"),
+    Profile(name: "Sarah Smith", job: "UI/UX Designer", localisation: "Paris"),
+    Profile(name: "Jane Doe", job: "Photographe", localisation: "Marseille", img: "developer_cover.jfif"),
+    Profile(name: "Lorem Ipsum", job: "", localisation: "Toulouse", img: "developer_cover.jfif"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarTakeOff(borderBottom: secondary,),
+        appBar: AppBarTakeOff(
+          borderBottom: secondary,
+        ),
         body: ListView.builder(
+            padding: EdgeInsets.all(30),
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
             itemCount: results.length,
             itemBuilder: (context, index) {
               Profile person = results[index];
               return Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 clipBehavior: Clip.antiAlias,
                 child: Column(
                   children: [
                     Image.asset("photos/${person.img}"),
                     ListTile(
-                      title: Text(person.name, style: TextStyle(color: primary, fontWeight: FontWeight.bold),),
+                      title: Text(
+                        person.name,
+                        style: TextStyle(
+                            color: primary, fontWeight: FontWeight.bold),
+                      ),
                       subtitle: Text(
-                        'Profession',
+                        person.job,
                         style: TextStyle(color: secondary),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        'Description du professionnel',
+                        person.description,
                         style: TextStyle(color: Colors.black.withOpacity(0.6)),
                       ),
                     ),
