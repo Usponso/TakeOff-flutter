@@ -16,7 +16,7 @@ class _TakeOffState extends State<TakeOff> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarTakeOff(callback: addFavorite, favorites: favorites,),
+        appBar: AppBarTakeOff(),
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -27,20 +27,9 @@ class _TakeOffState extends State<TakeOff> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SloganHome(),
-                  SearchHome(callback: addFavorite, favorites: favorites,),
+                  SearchHome(),
                 ]),
           ),
         ));
-  }
-
-  void addFavorite({required String name}) {
-    setState(() {
-      if (!favorites.contains(name)) {
-        favorites.add(name);
-      } else {
-        favorites.remove(name);
-      }
-    });
-    print(favorites.length);
   }
 }

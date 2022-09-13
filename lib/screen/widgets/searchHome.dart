@@ -5,10 +5,7 @@ import 'package:takeoff_flutter/screen/resultPage.dart';
 
 class SearchHome extends StatelessWidget {
   const SearchHome(
-      {super.key, required this.callback, required this.favorites});
-
-  final Function callback;
-  final List favorites;
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +47,7 @@ class SearchHome extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultPage(
-                        callback: callback, favorites: favorites),
+                    builder: (context) => ResultPage(),
                   ));
             },
             child: Text("RECHERCHER"),

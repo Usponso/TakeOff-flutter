@@ -9,7 +9,6 @@ class ProviderFav extends ChangeNotifier {
     } else {
       favorites.remove(name);
     }
-    print(favorites.length);
     notifyListeners();
   }
 }

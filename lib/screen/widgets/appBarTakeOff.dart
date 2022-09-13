@@ -6,10 +6,7 @@ import 'package:takeoff_flutter/screen/takeoff.dart';
 
 class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
   const AppBarTakeOff(
-      {super.key, required this.callback, required this.favorites});
-
-  final Function callback;
-  final List favorites;
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      FavoritesPage(callback: callback, favorites: favorites),
+                      FavoritesPage(),
                 ));
           },
           icon: Icon(Icons.favorite),
