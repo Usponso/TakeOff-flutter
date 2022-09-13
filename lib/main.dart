@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/takeoff.dart';
 import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TakeOff',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: MaterialColor(0xff8A87C1, mapColor),
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
       debugShowCheckedModeBanner: false,

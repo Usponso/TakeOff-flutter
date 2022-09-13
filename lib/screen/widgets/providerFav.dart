@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:takeoff_flutter/model/profile.dart';
 
 class ProviderFav extends ChangeNotifier {
-  final List<String> favorites = [];
+  final List<Profile> favorites = [];
 
-  void addFavorite({required String name}) {
-    if (!favorites.contains(name)) {
-      favorites.add(name);
+  void addFavorite({required Profile profile}) {
+    if (!favorites.contains(profile)) {
+      favorites.add(profile);
     } else {
-      favorites.remove(name);
+      favorites.remove(profile);
     }
     notifyListeners();
   }

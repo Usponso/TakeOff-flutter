@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
-import 'package:takeoff_flutter/screen/resultPage.dart';
+import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/widgets/appBarTakeOff.dart';
 import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
+
+import '../model/profile.dart';
 
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({super.key});
@@ -15,7 +17,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTakeOff(),
+      appBar: AppBarTakeOff(borderBottom: secondary,),
       body: Consumer<ProviderFav>(
         builder: (context, providerFav, child) {
           // ignore: curly_braces_in_flow_control_structures
@@ -24,16 +26,17 @@ class _FavoritesPageState extends State<FavoritesPage> {
             shrinkWrap: true,
             itemCount: providerFav.favorites.length,
             itemBuilder: (context, index) {
-              String favorite = providerFav.favorites[index];
+              Profile favorite = providerFav.favorites[index];
               return Card(
                 clipBehavior: Clip.antiAlias,
                 child: Column(
                   children: [
+                    Image.asset("photos/${favorite.img}"),
                     ListTile(
-                      title: Text(favorite),
+                      title: Text(favorite.name, style: TextStyle(color: primary, fontWeight: FontWeight.bold),),
                       subtitle: Text(
                         'Profession',
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                        style: TextStyle(color: secondary),
                       ),
                     ),
                     Padding(
@@ -55,7 +58,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         IconButton(
                           onPressed: () {
                             // print("FAVORITE $favorite");
-                            providerFav.addFavorite(name: favorite);
+                            providerFav.addFavorite(profile: favorite);
                           },
                           icon: Icon(Icons.favorite, color: Colors.red),
                         )

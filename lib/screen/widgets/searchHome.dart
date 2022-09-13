@@ -2,6 +2,7 @@
 
 import "package:flutter/material.dart";
 import 'package:takeoff_flutter/screen/resultPage.dart';
+import 'package:takeoff_flutter/screen/widgets/sloganHome.dart';
 
 class SearchHome extends StatelessWidget {
   const SearchHome(
@@ -12,6 +13,7 @@ class SearchHome extends StatelessWidget {
     return Container(
       child: Column(
         children: [
+          SloganHome(),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -50,10 +52,10 @@ class SearchHome extends StatelessWidget {
                     builder: (context) => ResultPage(),
                   ));
             },
-            child: Text("RECHERCHER"),
+            child: Text("Rechercher", style: TextStyle(fontWeight: FontWeight.bold),),
             style: ElevatedButton.styleFrom(
               minimumSize: Size.fromHeight(50),
-              backgroundColor: Colors.grey[900],
+              backgroundColor: Color(0xff303056),
             ),
           ),
         ],

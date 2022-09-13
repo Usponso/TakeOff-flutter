@@ -1,7 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
+import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/widgets/appBarTakeOff.dart';
 import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
+
+import '../model/profile.dart';
 
 class ResultPage extends StatefulWidget {
   const ResultPage({super.key});
@@ -11,33 +14,34 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
-  List results = [
-    "Jean Dupont",
-    "John Doe",
-    "Sarah Smith",
-    "Jane Doe",
-    "Lorem Ipsum"
+  List<Profile> results = [
+    Profile(name: "Jean Dupont", img: "developer_cover.jfif"),
+    Profile(name: "John Doe"),
+    Profile(name: "Sarah Smith"),
+    Profile(name: "Jane Doe", img: "developer_cover.jfif"),
+    Profile(name: "Lorem Ipsum", img: "developer_cover.jfif"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarTakeOff(),
+        appBar: AppBarTakeOff(borderBottom: secondary,),
         body: ListView.builder(
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
             itemCount: results.length,
             itemBuilder: (context, index) {
-              String person = results[index];
+              Profile person = results[index];
               return Card(
                 clipBehavior: Clip.antiAlias,
                 child: Column(
                   children: [
+                    Image.asset("photos/${person.img}"),
                     ListTile(
-                      title: Text(person),
+                      title: Text(person.name, style: TextStyle(color: primary, fontWeight: FontWeight.bold),),
                       subtitle: Text(
                         'Profession',
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                        style: TextStyle(color: secondary),
                       ),
                     ),
                     Padding(
@@ -61,7 +65,7 @@ class _ResultPageState extends State<ResultPage> {
                             return IconButton(
                               onPressed: () {
                                 // print("FAVORITE $person");
-                                providerFav.addFavorite(name: person);
+                                providerFav.addFavorite(profile: person);
                               },
                               icon: providerFav.favorites.contains(person)
                                   ? Icon(Icons.favorite, color: Colors.red)

@@ -15,21 +15,30 @@ class _TakeOffState extends State<TakeOff> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBarTakeOff(),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.purple[300],
-          child: Padding(
-            padding: EdgeInsets.all(8),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SloganHome(),
-                  SearchHome(),
-                ]),
-          ),
-        ));
+    return Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+              Color(0xffE8CAFB),
+              Color(0xff8A87C1),
+            ])),
+        child: Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBarTakeOff(),
+            body: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              // color: Colors.purple[300],
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SearchHome(),
+                    ]),
+              ),
+            )));
   }
 }

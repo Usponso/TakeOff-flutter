@@ -1,17 +1,27 @@
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
+import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/favoritesPage.dart';
 import 'package:takeoff_flutter/screen/resultPage.dart';
 import 'package:takeoff_flutter/screen/takeoff.dart';
 
 class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
-  const AppBarTakeOff(
-      {super.key});
+  const AppBarTakeOff({super.key, this.color = Colors.transparent, this.borderBottom = Colors.transparent});
+
+  final Color color;
+  final Color borderBottom;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.purple[300],
+      bottom: PreferredSize(
+        child: Container(
+          color:  borderBottom,
+          height: 4,
+        ),
+        preferredSize: Size.fromHeight(4.0),
+      ),
+      backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
         onPressed: () {
@@ -21,12 +31,16 @@ class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
                 builder: (context) => TakeOff(),
               ));
         },
-        icon: Icon(Icons.home),
+        icon: Icon(Icons.home, color: primary),
       ),
       centerTitle: true,
       title: Text(
         "TakeOff",
-        style: TextStyle(fontWeight: FontWeight.bold),
+        style: GoogleFonts.poppins(
+          color: Color(0xff303056),
+          fontWeight: FontWeight.w900,
+          fontSize: 35,
+        ),
       ),
       actions: [
         IconButton(
@@ -34,11 +48,10 @@ class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      FavoritesPage(),
+                  builder: (context) => FavoritesPage(),
                 ));
           },
-          icon: Icon(Icons.favorite),
+          icon: Icon(Icons.favorite, color: primary),
         )
       ],
     );
