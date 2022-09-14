@@ -1,10 +1,8 @@
 import "package:flutter/material.dart";
-import 'package:provider/provider.dart';
 import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/widgets/appBarTakeOff.dart';
 import 'package:takeoff_flutter/screen/widgets/customButton.dart';
 import 'package:takeoff_flutter/screen/widgets/customCard.dart';
-import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
 import 'package:takeoff_flutter/screen/widgets/searchHome.dart';
 
 import '../model/profile.dart';
@@ -46,12 +44,12 @@ class _ResultPageState extends State<ResultPage> {
         borderBottom: MyColors.secondary,
       ),
       body: ListView.separated(
-        padding: EdgeInsets.all(30),
+        // padding: EdgeInsets.all(30),
         // shrinkWrap: true,
         itemCount: results.length,
         separatorBuilder: (BuildContext context, int index) {
           return SizedBox(
-            height: 20,
+            height: 10,
           );
         },
         itemBuilder: (context, index) {
@@ -60,18 +58,25 @@ class _ResultPageState extends State<ResultPage> {
           if (index == 0) {
             return Column(
               children: [
-                SearchHome(),
+                Padding(
+                  padding: EdgeInsets.only(top: 30, left: 30, right: 30),
+                  child: SearchHome(),
+                ),
                 SizedBox(
                   height: 10,
                 ),
-                CustomButton(
-                  text: "Filtres",
-                  color: MyColors.secondary,
-                  full: true,
-                  radius: 40,
-                  height: 60,
+                Padding(
+                  padding: EdgeInsets.only(left: 30, right: 30),
+                  child: CustomButton(
+                    text: "Filtres",
+                    color: MyColors.secondary,
+                    full: true,
+                    radius: 40,
+                    height: 60,
+                  ),
                 ),
                 Container(
+                  width: MediaQuery.of(context).size.width,
                   height: 30,
                   decoration: BoxDecoration(
                     border: Border(
@@ -79,12 +84,18 @@ class _ResultPageState extends State<ResultPage> {
                     ),
                   ),
                 ),
-                CustomCard(person: person)
+                Padding(
+                  padding: EdgeInsets.only(top: 30, left: 30, right: 30),
+                  child: CustomCard(person: person),
+                ),
               ],
             );
           }
 
-          return CustomCard(person: person);
+          return Padding(
+            padding: EdgeInsets.only(left: 30, right: 30),
+            child: CustomCard(person: person),
+          );
         },
       ),
     );

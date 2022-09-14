@@ -24,7 +24,7 @@ class CustomCard extends StatelessWidget {
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
             ),
-            child: Image.asset("photos/${person.img}"),
+            child: Image.asset("assets/photos/${person.img}"),
           ),
           Padding(
             padding: EdgeInsets.all(20),

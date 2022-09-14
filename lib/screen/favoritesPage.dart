@@ -41,11 +41,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   children: [
                     ElevatedButton.icon(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ResultPage(),
-                            ));
+                        Navigator.pop(
+                          context,
+                        );
                       },
                       label: Text("Retour"),
                       icon: Icon(Icons.arrow_back_ios),
