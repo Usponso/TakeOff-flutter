@@ -13,6 +13,12 @@ Map<int, Color> mapColor = {
   900: Color.fromRGBO(136, 14, 79, 1),
 };
 
-Color primary = Color(0xff303056);
-Color secondary = Color(0xff8a87c1);
-Color tertiary = Color(0xffe8cafb);
+// Color primary = Color(0xff303056);
+// Color secondary = Color(0xff8a87c1);
+// Color tertiary = Color(0xffe8cafb);
+
+class MyColors {
+  static const Color primary = Color(0xff303056);
+  static const Color secondary = Color(0xff8a87c1);
+  static const Color tertiary = Color(0xffe8cafb);
+}

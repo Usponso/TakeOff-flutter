@@ -2,18 +2,20 @@
 
 import "package:flutter/material.dart";
 import 'package:takeoff_flutter/screen/resultPage.dart';
+import 'package:takeoff_flutter/screen/widgets/customButton.dart';
 import 'package:takeoff_flutter/screen/widgets/sloganHome.dart';
 
 class SearchHome extends StatelessWidget {
-  const SearchHome(
-      {super.key});
+  const SearchHome({super.key, this.slogan = false});
+
+  final bool slogan;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
-          SloganHome(),
+          if (slogan) SloganHome(),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -44,20 +46,35 @@ class SearchHome extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () {
+          CustomButton(
+            text: "Rechercher",
+            full: true,
+            height: 60,
+            onPress: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ResultPage(),
                   ));
             },
-            child: Text("Rechercher", style: TextStyle(fontWeight: FontWeight.bold),),
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size.fromHeight(50),
-              backgroundColor: Color(0xff303056),
-            ),
           ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //           builder: (context) => ResultPage(),
+          //         ));
+          //   },
+          //   child: Text(
+          //     "Rechercher",
+          //     style: TextStyle(fontWeight: FontWeight.bold),
+          //   ),
+          //   style: ElevatedButton.styleFrom(
+          //     minimumSize: Size.fromHeight(50),
+          //     backgroundColor: Color(0xff303056),
+          //   ),
+          // ),
         ],
       ),
     );

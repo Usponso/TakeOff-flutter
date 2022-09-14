@@ -2,9 +2,11 @@ import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
 import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/widgets/appBarTakeOff.dart';
+import 'package:takeoff_flutter/screen/widgets/customCard.dart';
 import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
 
 import '../model/profile.dart';
+import 'resultPage.dart';
 
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({super.key});
@@ -17,56 +19,45 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTakeOff(borderBottom: secondary,),
+      appBar: AppBarTakeOff(
+        borderBottom: MyColors.secondary,
+      ),
       body: Consumer<ProviderFav>(
         builder: (context, providerFav, child) {
-          // ignore: curly_braces_in_flow_control_structures
-          return ListView.builder(
-            scrollDirection: Axis.vertical,
+          return ListView.separated(
+            padding: EdgeInsets.all(30),
             shrinkWrap: true,
             itemCount: providerFav.favorites.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                height: 20,
+              );
+            },
             itemBuilder: (context, index) {
               Profile favorite = providerFav.favorites[index];
-              return Card(
-                clipBehavior: Clip.antiAlias,
-                child: Column(
+              if (index == 0) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset("photos/${favorite.img}"),
-                    ListTile(
-                      title: Text(favorite.name, style: TextStyle(color: primary, fontWeight: FontWeight.bold),),
-                      subtitle: Text(
-                        favorite.job,
-                        style: TextStyle(color: secondary),
-                      ),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ResultPage(),
+                            ));
+                      },
+                      label: Text("Retour"),
+                      icon: Icon(Icons.arrow_back_ios),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        favorite.description,
-                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                      ),
+                    SizedBox(
+                      height: 30,
                     ),
-                    ButtonBar(
-                      alignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            // Perform some action
-                          },
-                          child: const Text('VOIR LE PROFIL'),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            // print("FAVORITE $favorite");
-                            providerFav.addFavorite(profile: favorite);
-                          },
-                          icon: Icon(Icons.favorite, color: Colors.red),
-                        )
-                      ],
-                    ),
+                    CustomCard(person: favorite),
                   ],
-                ),
-              );
+                );
+              }
+              return CustomCard(person: favorite);
             },
           );
         },

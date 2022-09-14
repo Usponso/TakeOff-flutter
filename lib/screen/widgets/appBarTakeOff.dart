@@ -31,7 +31,7 @@ class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
                 builder: (context) => TakeOff(),
               ));
         },
-        icon: Icon(Icons.home, color: primary),
+        icon: Icon(Icons.home, color: MyColors.primary),
       ),
       centerTitle: true,
       title: Text(
@@ -51,7 +51,7 @@ class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
                   builder: (context) => FavoritesPage(),
                 ));
           },
-          icon: Icon(Icons.favorite, color: primary),
+          icon: Icon(Icons.favorite, color: MyColors.primary),
         )
       ],
     );
