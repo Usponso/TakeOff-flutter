@@ -8,7 +8,6 @@ import 'providerFav.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({super.key, required this.person});
-
   final Profile person;
 
   @override
@@ -32,12 +31,13 @@ class CustomCard extends StatelessWidget {
               children: [
                 Text(
                   person.name,
-                  style: TextStyle(color: MyColors.primary, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: MyColors.primary, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   person.job,
-                  style:
-                      TextStyle(color: MyColors.secondary, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: MyColors.secondary, fontWeight: FontWeight.bold),
                 ),
                 Padding(
                   padding: EdgeInsets.all(20),
@@ -51,19 +51,20 @@ class CustomCard extends StatelessWidget {
                   child: ButtonBar(
                     alignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomButton(text: "Voir le profil", color: MyColors.secondary,),
-                      Consumer<ProviderFav>(
-                        builder: (context, providerFav, child) {
-                          return IconButton(
-                            onPressed: () {
-                              providerFav.addFavorite(profile: person);
-                            },
-                            icon: providerFav.favorites.contains(person)
-                                ? Icon(Icons.favorite, color: Colors.red)
-                                : Icon(Icons.favorite_border,
-                                    color: Colors.black),
-                          );
+                      CustomButton(
+                        text: "Voir le profil",
+                        color: MyColors.secondary,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Provider.of<ProviderFav>(context, listen: false)
+                              .addFavorite(profile: person);
                         },
+                        icon: Provider.of<ProviderFav>(context, listen: false)
+                                .favorites
+                                .contains(person)
+                            ? Icon(Icons.favorite, color: Colors.red)
+                            : Icon(Icons.favorite_border, color: Colors.black),
                       ),
                     ],
                   ),

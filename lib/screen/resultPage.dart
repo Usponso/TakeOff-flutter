@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
+import 'package:provider/provider.dart';
 import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/widgets/appBarTakeOff.dart';
 import 'package:takeoff_flutter/screen/widgets/customButton.dart';
 import 'package:takeoff_flutter/screen/widgets/customCard.dart';
+import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
 import 'package:takeoff_flutter/screen/widgets/searchHome.dart';
 
 import '../model/profile.dart';
@@ -15,28 +17,6 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
-  List<Profile> results = [
-    Profile(
-        name: "Jean Dupont",
-        job: "Développeur fullstack",
-        localisation: "Bethune",
-        description:
-            "Développer FullStack depuis 5 ans. Je maitrise Vue.js, Angular et React.",
-        img: "developer_cover.jfif"),
-    Profile(name: "John Doe", job: "Ingénieur son", localisation: "Lille"),
-    Profile(name: "Sarah Smith", job: "UI/UX Designer", localisation: "Paris"),
-    Profile(
-        name: "Jane Doe",
-        job: "Photographe",
-        localisation: "Marseille",
-        img: "developer_cover.jfif"),
-    Profile(
-        name: "Lorem Ipsum",
-        job: "",
-        localisation: "Toulouse",
-        img: "developer_cover.jfif"),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +66,11 @@ class _ResultPageState extends State<ResultPage> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 30, left: 30, right: 30),
-                  child: CustomCard(person: person),
+                  child: Consumer<ProviderFav>(
+                    builder: (context, providerFav, child) {
+                      return CustomCard(person: person);
+                    },
+                  ),
                 ),
               ],
             );
@@ -94,7 +78,11 @@ class _ResultPageState extends State<ResultPage> {
 
           return Padding(
             padding: EdgeInsets.only(left: 30, right: 30),
-            child: CustomCard(person: person),
+            child: Consumer<ProviderFav>(
+              builder: (context, providerFav, child) {
+                return CustomCard(person: person);
+              },
+            ),
           );
         },
       ),

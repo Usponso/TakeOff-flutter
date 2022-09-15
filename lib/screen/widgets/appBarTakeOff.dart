@@ -6,7 +6,10 @@ import 'package:takeoff_flutter/screen/resultPage.dart';
 import 'package:takeoff_flutter/screen/takeoff.dart';
 
 class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
-  const AppBarTakeOff({super.key, this.color = Colors.transparent, this.borderBottom = Colors.transparent});
+  const AppBarTakeOff(
+      {super.key,
+      this.color = Colors.transparent,
+      this.borderBottom = Colors.transparent});
 
   final Color color;
   final Color borderBottom;
@@ -16,7 +19,7 @@ class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       bottom: PreferredSize(
         child: Container(
-          color:  borderBottom,
+          color: borderBottom,
           height: 4,
         ),
         preferredSize: Size.fromHeight(4.0),
@@ -25,11 +28,7 @@ class AppBarTakeOff extends StatelessWidget with PreferredSizeWidget {
       elevation: 0,
       leading: IconButton(
         onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => TakeOff(),
-              ));
+          Navigator.popAndPushNamed(context, "/");
         },
         icon: Icon(Icons.home, color: MyColors.primary),
       ),

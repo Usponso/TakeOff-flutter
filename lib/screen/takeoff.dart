@@ -34,10 +34,13 @@ class _TakeOffState extends State<TakeOff> {
           child: Padding(
             padding: EdgeInsets.all(8),
             child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SearchHome(slogan: true,),
-                ]),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SearchHome(
+                  slogan: true,
+                ),
+              ],
+            ),
           ),
         ),
       ),

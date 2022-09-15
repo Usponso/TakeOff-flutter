@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:takeoff_flutter/constant.dart';
+import 'package:takeoff_flutter/screen/favoritesPage.dart';
+import 'package:takeoff_flutter/screen/resultPage.dart';
 import 'package:takeoff_flutter/screen/takeoff.dart';
 import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
 
@@ -22,12 +24,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TakeOff',
+      initialRoute: "/",
+      routes: {
+        "/" : (context) => const TakeOff(),
+        "/search": (context) => const ResultPage(),
+        "favorites": (context) => const FavoritesPage(),
+      },
       theme: ThemeData(
         primarySwatch: MaterialColor(0xff8A87C1, mapColor),
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      home: TakeOff(),
+      // home: TakeOff(),
     );
   }
 }
