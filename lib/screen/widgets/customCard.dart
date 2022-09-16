@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:takeoff_flutter/screen/widgets/customButton.dart';
+import 'package:takeoff_flutter/screen/widgets/profilePage.dart';
 
 import '../../constant.dart';
 import '../../model/profile.dart';
-import 'providerFav.dart';
+import '../../service/providerFav.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({super.key, required this.person});
@@ -54,6 +55,14 @@ class CustomCard extends StatelessWidget {
                       CustomButton(
                         text: "Voir le profil",
                         color: MyColors.secondary,
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ProfilePage(profile: person),
+                              ));
+                        },
                       ),
                       IconButton(
                         onPressed: () {

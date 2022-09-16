@@ -4,7 +4,7 @@ import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/widgets/appBarTakeOff.dart';
 import 'package:takeoff_flutter/screen/widgets/customButton.dart';
 import 'package:takeoff_flutter/screen/widgets/customCard.dart';
-import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
+import 'package:takeoff_flutter/service/providerFav.dart';
 import 'package:takeoff_flutter/screen/widgets/searchHome.dart';
 
 import '../model/profile.dart';

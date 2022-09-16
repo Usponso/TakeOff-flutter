@@ -5,7 +5,7 @@ import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/favoritesPage.dart';
 import 'package:takeoff_flutter/screen/resultPage.dart';
 import 'package:takeoff_flutter/screen/takeoff.dart';
-import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
+import 'package:takeoff_flutter/service/providerFav.dart';
 
 void main() {
   runApp(

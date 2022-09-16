@@ -3,10 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:takeoff_flutter/constant.dart';
 import 'package:takeoff_flutter/screen/widgets/appBarTakeOff.dart';
 import 'package:takeoff_flutter/screen/widgets/customCard.dart';
-import 'package:takeoff_flutter/screen/widgets/providerFav.dart';
+import 'package:takeoff_flutter/service/providerFav.dart';
 
 import '../model/profile.dart';
-import 'resultPage.dart';
 
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({super.key});
